@@ -1,0 +1,319 @@
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Send, MessageCircle, Mail, Phone, MapPin } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { useToast } from '@/hooks/use-toast';
+import { z } from 'zod';
+
+const contactSchema = z.object({
+  name: z.string().trim().min(1, 'Name is required').max(100, 'Name must be less than 100 characters'),
+  email: z.string().trim().email('Invalid email address').max(255, 'Email must be less than 255 characters'),
+  company: z.string().max(100, 'Company name must be less than 100 characters').optional(),
+  projectType: z.string().optional(),
+  budget: z.string().optional(),
+  message: z.string().trim().min(1, 'Message is required').max(1000, 'Message must be less than 1000 characters'),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
+
+export default function ContactSection() {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState<ContactFormData>({
+    name: '',
+    email: '',
+    company: '',
+    projectType: '',
+    budget: '',
+    message: '',
+  });
+  const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
+
+  const handleChange = (field: keyof ContactFormData, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    if (errors[field]) {
+      setErrors((prev) => ({ ...prev, [field]: undefined }));
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setErrors({});
+
+    const result = contactSchema.safeParse(formData);
+    
+    if (!result.success) {
+      const fieldErrors: Partial<Record<keyof ContactFormData, string>> = {};
+      result.error.errors.forEach((err) => {
+        if (err.path[0]) {
+          fieldErrors[err.path[0] as keyof ContactFormData] = err.message;
+        }
+      });
+      setErrors(fieldErrors);
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Simulate form submission
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    
+    toast({
+      title: "Message sent successfully!",
+      description: "We'll respond within 24 hours. Thank you for reaching out!",
+    });
+    
+    setFormData({
+      name: '',
+      email: '',
+      company: '',
+      projectType: '',
+      budget: '',
+      message: '',
+    });
+    setIsSubmitting(false);
+  };
+
+  return (
+    <section id="contact" className="py-24 md:py-32 relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/30 to-background" />
+      
+      <div className="section-container relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <span className="text-primary text-sm font-semibold uppercase tracking-wider">
+            Get In Touch
+          </span>
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-4 mb-6">
+            Let's Build Something Amazing
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Ready to transform your business with technology? Tell us about your project, 
+            and we'll get back to you within 24 hours.
+          </p>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-5 gap-12 max-w-6xl mx-auto">
+          {/* Contact Info */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-2 space-y-8"
+          >
+            <div>
+              <h3 className="font-display text-xl font-semibold text-foreground mb-6">
+                Contact Information
+              </h3>
+              
+              <div className="space-y-6">
+                <a
+                  href="https://wa.me/255123456789"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 p-4 rounded-xl bg-card/50 border border-border/50 hover:border-primary/50 transition-colors group"
+                >
+                  <div className="w-12 h-12 rounded-lg bg-green-500/20 text-green-500 flex items-center justify-center">
+                    <MessageCircle className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="text-sm text-muted-foreground">WhatsApp</div>
+                    <div className="text-foreground font-medium group-hover:text-primary transition-colors">
+                      +255 123 456 789
+                    </div>
+                  </div>
+                </a>
+
+                <a
+                  href="mailto:hello@kbsoftwares.com"
+                  className="flex items-center gap-4 p-4 rounded-xl bg-card/50 border border-border/50 hover:border-primary/50 transition-colors group"
+                >
+                  <div className="w-12 h-12 rounded-lg bg-primary/20 text-primary flex items-center justify-center">
+                    <Mail className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="text-sm text-muted-foreground">Email</div>
+                    <div className="text-foreground font-medium group-hover:text-primary transition-colors">
+                      hello@kbsoftwares.com
+                    </div>
+                  </div>
+                </a>
+
+                <div className="flex items-center gap-4 p-4 rounded-xl bg-card/50 border border-border/50">
+                  <div className="w-12 h-12 rounded-lg bg-accent/20 text-accent flex items-center justify-center">
+                    <MapPin className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="text-sm text-muted-foreground">Location</div>
+                    <div className="text-foreground font-medium">
+                      Dar es Salaam, Tanzania
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-6 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 border border-primary/30">
+              <h4 className="font-display font-semibold text-foreground mb-2">
+                Prefer a quick chat?
+              </h4>
+              <p className="text-muted-foreground text-sm mb-4">
+                WhatsApp is often the fastest way to reach us. Click to start a conversation!
+              </p>
+              <Button
+                asChild
+                className="bg-green-600 hover:bg-green-700 text-white w-full"
+              >
+                <a
+                  href="https://wa.me/255123456789"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle className="w-4 h-4 mr-2" />
+                  Chat on WhatsApp
+                </a>
+              </Button>
+            </div>
+          </motion.div>
+
+          {/* Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-3"
+          >
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid sm:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                    Name *
+                  </label>
+                  <Input
+                    id="name"
+                    value={formData.name}
+                    onChange={(e) => handleChange('name', e.target.value)}
+                    placeholder="John Doe"
+                    className={`bg-card border-border/50 focus:border-primary ${errors.name ? 'border-destructive' : ''}`}
+                  />
+                  {errors.name && <p className="text-destructive text-xs mt-1">{errors.name}</p>}
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                    Email *
+                  </label>
+                  <Input
+                    id="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => handleChange('email', e.target.value)}
+                    placeholder="john@company.com"
+                    className={`bg-card border-border/50 focus:border-primary ${errors.email ? 'border-destructive' : ''}`}
+                  />
+                  {errors.email && <p className="text-destructive text-xs mt-1">{errors.email}</p>}
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="company" className="block text-sm font-medium text-foreground mb-2">
+                  Company / Organization
+                </label>
+                <Input
+                  id="company"
+                  value={formData.company}
+                  onChange={(e) => handleChange('company', e.target.value)}
+                  placeholder="Acme Inc."
+                  className="bg-card border-border/50 focus:border-primary"
+                />
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="projectType" className="block text-sm font-medium text-foreground mb-2">
+                    Project Type
+                  </label>
+                  <Select value={formData.projectType} onValueChange={(value) => handleChange('projectType', value)}>
+                    <SelectTrigger className="bg-card border-border/50 focus:border-primary">
+                      <SelectValue placeholder="Select type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="web">Web Development</SelectItem>
+                      <SelectItem value="software">Custom Software</SelectItem>
+                      <SelectItem value="ai">AI & Automation</SelectItem>
+                      <SelectItem value="mobile">Mobile App</SelectItem>
+                      <SelectItem value="consulting">Consulting</SelectItem>
+                      <SelectItem value="other">Not Sure</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div>
+                  <label htmlFor="budget" className="block text-sm font-medium text-foreground mb-2">
+                    Budget Range
+                  </label>
+                  <Select value={formData.budget} onValueChange={(value) => handleChange('budget', value)}>
+                    <SelectTrigger className="bg-card border-border/50 focus:border-primary">
+                      <SelectValue placeholder="Select range" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="<5k">Less than $5,000</SelectItem>
+                      <SelectItem value="5k-20k">$5,000 - $20,000</SelectItem>
+                      <SelectItem value="20k-50k">$20,000 - $50,000</SelectItem>
+                      <SelectItem value="50k+">$50,000+</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                  Tell us about your project *
+                </label>
+                <Textarea
+                  id="message"
+                  value={formData.message}
+                  onChange={(e) => handleChange('message', e.target.value)}
+                  placeholder="Describe your project, goals, and any specific requirements..."
+                  rows={5}
+                  className={`bg-card border-border/50 focus:border-primary resize-none ${errors.message ? 'border-destructive' : ''}`}
+                />
+                {errors.message && <p className="text-destructive text-xs mt-1">{errors.message}</p>}
+                <p className="text-muted-foreground text-xs mt-1">{formData.message.length}/1000 characters</p>
+              </div>
+
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                size="lg"
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-6 glow-effect"
+              >
+                {isSubmitting ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin mr-2" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    Send Message
+                    <Send className="w-5 h-5 ml-2" />
+                  </>
+                )}
+              </Button>
+            </form>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
