@@ -60,7 +60,7 @@ const itemVariants = {
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="py-24 md:py-32 relative">
+    <section id="services" className="py-16 md:py-24 lg:py-32 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/30 to-background" />
       
       <div className="section-container relative z-10">
@@ -69,15 +69,15 @@ export default function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <span className="text-primary text-sm font-semibold uppercase tracking-wider">
+          <span className="text-primary text-xs md:text-sm font-semibold uppercase tracking-wider">
             What We Do
           </span>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-4 mb-6">
+          <h2 className="font-display text-2xl md:text-4xl lg:text-5xl font-bold text-foreground mt-3 md:mt-4 mb-4 md:mb-6">
             Services That Drive Growth
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto px-2">
             From concept to launch, we build digital products that solve real problems 
             and create lasting impact for your business.
           </p>
@@ -88,37 +88,37 @@ export default function ServicesSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
         >
           {services.map((service, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              className={`group relative p-8 rounded-2xl card-gradient border border-border/50 hover:border-${service.color}/50 transition-all duration-300 hover:-translate-y-2`}
+              className={`group relative p-5 md:p-8 rounded-2xl card-gradient border border-border/50 hover:border-${service.color}/50 transition-all duration-300 md:hover:-translate-y-2 active:scale-[0.98]`}
             >
               <div
-                className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 ${
+                className={`w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center mb-4 md:mb-6 ${
                   service.color === 'primary'
                     ? 'bg-primary/20 text-primary'
                     : 'bg-accent/20 text-accent'
                 }`}
               >
-                <service.icon className="w-7 h-7" />
+                <service.icon className="w-6 h-6 md:w-7 md:h-7" />
               </div>
 
-              <h3 className="font-display text-xl font-semibold text-foreground mb-3">
+              <h3 className="font-display text-lg md:text-xl font-semibold text-foreground mb-2 md:mb-3">
                 {service.title}
               </h3>
 
-              <p className="text-muted-foreground mb-6 leading-relaxed">
+              <p className="text-muted-foreground text-sm md:text-base mb-4 md:mb-6 leading-relaxed">
                 {service.description}
               </p>
 
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5 md:gap-2">
                 {service.technologies.map((tech, i) => (
                   <span
                     key={i}
-                    className="text-xs px-3 py-1 rounded-full bg-muted text-muted-foreground"
+                    className="text-[10px] md:text-xs px-2 md:px-3 py-0.5 md:py-1 rounded-full bg-muted text-muted-foreground"
                   >
                     {tech}
                   </span>
