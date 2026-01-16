@@ -78,7 +78,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 relative">
+    <section id="contact" className="py-16 md:py-24 lg:py-32 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/30 to-background" />
       
       <div className="section-container relative z-10">
@@ -87,47 +87,47 @@ export default function ContactSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <span className="text-primary text-sm font-semibold uppercase tracking-wider">
+          <span className="text-primary text-xs md:text-sm font-semibold uppercase tracking-wider">
             Get In Touch
           </span>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-4 mb-6">
+          <h2 className="font-display text-2xl md:text-4xl lg:text-5xl font-bold text-foreground mt-3 md:mt-4 mb-4 md:mb-6">
             Let's Build Something Amazing
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto px-2">
             Ready to transform your business with technology? Tell us about your project, 
             and we'll get back to you within 24 hours.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-12 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-5 gap-8 md:gap-12 max-w-6xl mx-auto">
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-2 space-y-8"
+            className="lg:col-span-2 space-y-6 md:space-y-8"
           >
             <div>
-              <h3 className="font-display text-xl font-semibold text-foreground mb-6">
+              <h3 className="font-display text-lg md:text-xl font-semibold text-foreground mb-4 md:mb-6">
                 Contact Information
               </h3>
               
-              <div className="space-y-6">
+              <div className="space-y-4 md:space-y-6">
                 <a
                   href="https://wa.me/255123456789"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-4 rounded-xl bg-card/50 border border-border/50 hover:border-primary/50 transition-colors group"
+                  className="flex items-center gap-3 md:gap-4 p-3 md:p-4 rounded-xl bg-card/50 border border-border/50 hover:border-primary/50 active:scale-[0.98] transition-all group"
                 >
-                  <div className="w-12 h-12 rounded-lg bg-green-500/20 text-green-500 flex items-center justify-center">
-                    <MessageCircle className="w-6 h-6" />
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-green-500/20 text-green-500 flex items-center justify-center flex-shrink-0">
+                    <MessageCircle className="w-5 h-5 md:w-6 md:h-6" />
                   </div>
-                  <div>
-                    <div className="text-sm text-muted-foreground">WhatsApp</div>
-                    <div className="text-foreground font-medium group-hover:text-primary transition-colors">
+                  <div className="min-w-0">
+                    <div className="text-xs md:text-sm text-muted-foreground">WhatsApp</div>
+                    <div className="text-foreground font-medium group-hover:text-primary transition-colors text-sm md:text-base truncate">
                       +255 123 456 789
                     </div>
                   </div>
@@ -135,26 +135,26 @@ export default function ContactSection() {
 
                 <a
                   href="mailto:hello@kbsoftwares.com"
-                  className="flex items-center gap-4 p-4 rounded-xl bg-card/50 border border-border/50 hover:border-primary/50 transition-colors group"
+                  className="flex items-center gap-3 md:gap-4 p-3 md:p-4 rounded-xl bg-card/50 border border-border/50 hover:border-primary/50 active:scale-[0.98] transition-all group"
                 >
-                  <div className="w-12 h-12 rounded-lg bg-primary/20 text-primary flex items-center justify-center">
-                    <Mail className="w-6 h-6" />
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-primary/20 text-primary flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-5 h-5 md:w-6 md:h-6" />
                   </div>
-                  <div>
-                    <div className="text-sm text-muted-foreground">Email</div>
-                    <div className="text-foreground font-medium group-hover:text-primary transition-colors">
+                  <div className="min-w-0">
+                    <div className="text-xs md:text-sm text-muted-foreground">Email</div>
+                    <div className="text-foreground font-medium group-hover:text-primary transition-colors text-sm md:text-base truncate">
                       hello@kbsoftwares.com
                     </div>
                   </div>
                 </a>
 
-                <div className="flex items-center gap-4 p-4 rounded-xl bg-card/50 border border-border/50">
-                  <div className="w-12 h-12 rounded-lg bg-accent/20 text-accent flex items-center justify-center">
-                    <MapPin className="w-6 h-6" />
+                <div className="flex items-center gap-3 md:gap-4 p-3 md:p-4 rounded-xl bg-card/50 border border-border/50">
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-accent/20 text-accent flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-5 h-5 md:w-6 md:h-6" />
                   </div>
-                  <div>
-                    <div className="text-sm text-muted-foreground">Location</div>
-                    <div className="text-foreground font-medium">
+                  <div className="min-w-0">
+                    <div className="text-xs md:text-sm text-muted-foreground">Location</div>
+                    <div className="text-foreground font-medium text-sm md:text-base">
                       Dar es Salaam, Tanzania
                     </div>
                   </div>
@@ -162,16 +162,16 @@ export default function ContactSection() {
               </div>
             </div>
 
-            <div className="p-6 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 border border-primary/30">
-              <h4 className="font-display font-semibold text-foreground mb-2">
+            <div className="p-4 md:p-6 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 border border-primary/30">
+              <h4 className="font-display font-semibold text-foreground mb-2 text-sm md:text-base">
                 Prefer a quick chat?
               </h4>
-              <p className="text-muted-foreground text-sm mb-4">
+              <p className="text-muted-foreground text-xs md:text-sm mb-3 md:mb-4">
                 WhatsApp is often the fastest way to reach us. Click to start a conversation!
               </p>
               <Button
                 asChild
-                className="bg-green-600 hover:bg-green-700 text-white w-full"
+                className="bg-green-600 hover:bg-green-700 active:bg-green-800 text-white w-full"
               >
                 <a
                   href="https://wa.me/255123456789"
@@ -296,7 +296,7 @@ export default function ContactSection() {
                 type="submit"
                 disabled={isSubmitting}
                 size="lg"
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-6 glow-effect"
+                className="w-full bg-primary hover:bg-primary/90 active:bg-primary/80 text-primary-foreground font-semibold py-5 md:py-6 glow-effect"
               >
                 {isSubmitting ? (
                   <>
