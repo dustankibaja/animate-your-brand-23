@@ -54,24 +54,23 @@ const itemVariants = {
 
 export default function PortfolioSection() {
   return (
-    <section id="portfolio" className="py-24 md:py-32 relative">
-      <div className="section-container">
+<section id="portfolio" className="py-16 md:py-24 lg:py-32 relative">
+      <div className="section-container px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <span className="text-primary text-sm font-semibold uppercase tracking-wider">
+          <span className="text-primary text-xs md:text-sm font-semibold uppercase tracking-wider">
             Our Work
           </span>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-4 mb-6">
+          <h2 className="font-display text-2xl md:text-4xl lg:text-5xl font-bold text-foreground mt-3 md:mt-4 mb-4 md:mb-6">
             Projects That Make an Impact
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Every project tells a story of challenges overcome and value delivered. 
-            Here's a glimpse of what we've built for our partners.
+          <p className="text-muted-foreground text-sm md:text-lg max-w-2xl mx-auto leading-relaxed">
+            Every project tells a story of challenges overcome and value delivered.
           </p>
         </motion.div>
 
@@ -80,78 +79,80 @@ export default function PortfolioSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="space-y-16"
+          className="space-y-10 md:space-y-16"
         >
           {projects.map((project, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${
+              className={`grid lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center ${
                 index % 2 === 1 ? 'lg:flex-row-reverse' : ''
               }`}
             >
               {/* Project Image/Visual */}
               <div className={`order-1 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-                <div
-                  className="relative aspect-[4/3] rounded-2xl overflow-hidden group"
+                <motion.div
+                  className="relative aspect-[4/3] rounded-xl md:rounded-2xl overflow-hidden group cursor-pointer"
                   style={{ background: project.image }}
+                  whileTap={{ scale: 0.98 }}
                 >
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center p-8">
-                      <div className="w-20 h-20 mx-auto mb-4 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center">
-                        <span className="font-display text-3xl font-bold text-white">
+                    <div className="text-center p-6 md:p-8">
+                      <div className="w-14 h-14 md:w-20 md:h-20 mx-auto mb-3 md:mb-4 rounded-xl md:rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center">
+                        <span className="font-display text-xl md:text-3xl font-bold text-white">
                           {project.title.charAt(0)}
                         </span>
                       </div>
-                      <h4 className="font-display text-2xl font-semibold text-white mb-2">
+                      <h4 className="font-display text-lg md:text-2xl font-semibold text-white mb-1 md:mb-2">
                         {project.title}
                       </h4>
-                      <span className="text-white/80 text-sm">{project.category}</span>
+                      <span className="text-white/80 text-xs md:text-sm">{project.category}</span>
                     </div>
                   </div>
                   
-                  {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-background/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  {/* Tap/Hover overlay */}
+                  <div className="absolute inset-0 bg-background/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 active:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <Button
                       variant="outline"
-                      className="border-foreground/30 hover:border-primary hover:bg-primary/10 text-foreground"
+                      size="sm"
+                      className="border-foreground/30 hover:border-primary hover:bg-primary/10 active:bg-primary/20 text-foreground text-sm md:text-base h-10 md:h-11"
                     >
                       View Case Study
                       <ArrowUpRight className="ml-2 w-4 h-4" />
                     </Button>
                   </div>
-                </div>
+                </motion.div>
               </div>
 
               {/* Project Details */}
               <div className={`order-2 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                <span className="text-accent text-sm font-semibold uppercase tracking-wider">
+                <span className="text-accent text-xs md:text-sm font-semibold uppercase tracking-wider">
                   {project.category}
                 </span>
-                <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mt-2 mb-4">
+                <h3 className="font-display text-xl md:text-2xl lg:text-3xl font-bold text-foreground mt-1.5 md:mt-2 mb-3 md:mb-4">
                   {project.title}
                 </h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
+                <p className="text-muted-foreground text-sm md:text-base mb-4 md:mb-6 leading-relaxed">
                   {project.description}
                 </p>
 
-                <div className="space-y-4 mb-6">
-                  <div>
-                    <h4 className="text-sm font-semibold text-foreground mb-1">The Challenge</h4>
-                    <p className="text-muted-foreground text-sm">{project.challenge}</p>
+                <div className="space-y-3 md:space-y-4 mb-4 md:mb-6">
+                  <div className="p-3 md:p-4 rounded-xl bg-muted/30 border border-border/50">
+                    <h4 className="text-xs md:text-sm font-semibold text-foreground mb-1">The Challenge</h4>
+                    <p className="text-muted-foreground text-xs md:text-sm">{project.challenge}</p>
                   </div>
-                  <div>
-                    <h4 className="text-sm font-semibold text-foreground mb-1">Our Solution</h4>
-                    <p className="text-muted-foreground text-sm">{project.solution}</p>
+                  <div className="p-3 md:p-4 rounded-xl bg-muted/30 border border-border/50">
+                    <h4 className="text-xs md:text-sm font-semibold text-foreground mb-1">Our Solution</h4>
+                    <p className="text-muted-foreground text-xs md:text-sm">{project.solution}</p>
                   </div>
                 </div>
 
                 {/* Results */}
-                <div className="flex flex-wrap gap-3 mb-6">
+                <div className="flex flex-wrap gap-2 md:gap-3 mb-4 md:mb-6">
                   {project.results.map((result, i) => (
                     <span
                       key={i}
-                      className="px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium"
+                      className="px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-primary/10 text-primary text-xs md:text-sm font-medium"
                     >
                       {result}
                     </span>
@@ -159,11 +160,11 @@ export default function PortfolioSection() {
                 </div>
 
                 {/* Technologies */}
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5 md:gap-2">
                   {project.technologies.map((tech, i) => (
                     <span
                       key={i}
-                      className="text-xs px-3 py-1 rounded-full bg-muted text-muted-foreground"
+                      className="text-[10px] md:text-xs px-2.5 md:px-3 py-1 rounded-full bg-muted text-muted-foreground"
                     >
                       {tech}
                     </span>
