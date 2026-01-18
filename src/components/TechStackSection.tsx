@@ -34,77 +34,106 @@ const process = [
 
 export default function TechStackSection() {
   return (
-    <section className="py-24 md:py-32 relative overflow-hidden">
+<section className="py-16 md:py-24 lg:py-32 relative overflow-hidden">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16 px-4"
         >
-          <span className="text-primary text-sm font-semibold uppercase tracking-wider">Technology</span>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-4 mb-6">Built with the Best</h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <span className="text-primary text-xs md:text-sm font-semibold uppercase tracking-wider">Technology</span>
+          <h2 className="font-display text-2xl md:text-4xl lg:text-5xl font-bold text-foreground mt-3 md:mt-4 mb-4 md:mb-6">Built with the Best</h2>
+          <p className="text-muted-foreground text-sm md:text-lg max-w-2xl mx-auto leading-relaxed">
             We use modern, battle-tested technologies that ensure your product is fast, secure, and ready to scale.
           </p>
         </motion.div>
 
-        {/* Floating Icons */}
-        <div className="relative h-[300px] md:h-[400px] mb-24">
-          {techIcons.map((tech, index) => {
+        {/* Floating Icons - Optimized for mobile */}
+        <div className="relative h-[280px] md:h-[400px] mb-16 md:mb-24">
+          {techIcons.slice(0, 10).map((tech, index) => {
             const pos = iconPositions[index % iconPositions.length];
             return (
               <motion.div
                 key={tech.name}
-                className="absolute w-10 h-10 md:w-14 md:h-14 cursor-pointer group"
+                className="absolute w-8 h-8 md:w-12 md:h-12 lg:w-14 lg:h-14 cursor-pointer group"
                 style={{ 
                   color: tech.color, 
                   left: `${pos.x}%`, 
                   top: `${pos.y}%`,
-                  filter: `drop-shadow(0 0 12px ${tech.color}50)`
+                  filter: `drop-shadow(0 0 10px ${tech.color}40)`
                 }}
                 initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 0.7, scale: 1 }}
+                whileInView={{ opacity: 0.8, scale: 1 }}
                 viewport={{ once: true }}
                 animate={{ 
-                  y: [0, -15, 0, 15, 0],
-                  x: [0, 8, 0, -8, 0],
-                  rotate: [0, 3, 0, -3, 0],
+                  y: [0, -10, 0, 10, 0],
+                  x: [0, 5, 0, -5, 0],
                 }}
                 transition={{
-                  duration: 6 + index * 0.5,
+                  duration: 8 + index * 0.5,
                   delay: index * 0.1,
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                whileHover={{ scale: 1.4, opacity: 1 }}
+                whileTap={{ scale: 1.3, opacity: 1 }}
+                whileHover={{ scale: 1.3, opacity: 1 }}
               >
                 {tech.icon}
-                <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-xs text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                <motion.span 
+                  className="absolute -bottom-7 left-1/2 -translate-x-1/2 text-[10px] md:text-xs text-foreground bg-card/90 backdrop-blur-sm px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 whitespace-nowrap shadow-lg border border-border/50 pointer-events-none"
+                  initial={{ y: 5 }}
+                  whileHover={{ y: 0 }}
+                >
                   {tech.name}
-                </span>
+                </motion.span>
               </motion.div>
             );
           })}
         </div>
 
         {/* Process */}
-        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-16">
-          <span className="text-accent text-sm font-semibold uppercase tracking-wider">Our Process</span>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mt-4 mb-6">How We Work</h2>
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
+          viewport={{ once: true }} 
+          transition={{ duration: 0.6 }} 
+          className="text-center mb-10 md:mb-16 px-4"
+        >
+          <span className="text-accent text-xs md:text-sm font-semibold uppercase tracking-wider">Our Process</span>
+          <h2 className="font-display text-2xl md:text-4xl font-bold text-foreground mt-3 md:mt-4 mb-4 md:mb-6">How We Work</h2>
         </motion.div>
 
-        <div className="relative">
+        <div className="relative px-2 md:px-0">
+          {/* Mobile connecting line */}
+          <div className="md:hidden absolute left-8 top-10 bottom-10 w-0.5 bg-gradient-to-b from-primary/50 via-accent/50 to-primary/50" />
+          {/* Desktop connecting line */}
           <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-border to-transparent -translate-y-1/2" />
-          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          
+          <motion.div 
+            initial={{ opacity: 0 }} 
+            whileInView={{ opacity: 1 }} 
+            viewport={{ once: true }} 
+            transition={{ duration: 0.6 }} 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
+          >
             {process.map((step, index) => (
-              <motion.div key={index} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.15 }} className="relative text-center lg:text-left">
-                <div className="relative z-10 w-16 h-16 mx-auto lg:mx-0 mb-6 rounded-2xl bg-gradient-to-br from-primary to-primary/50 flex items-center justify-center">
-                  <span className="font-display text-2xl font-bold text-primary-foreground">{step.step}</span>
+              <motion.div 
+                key={index} 
+                initial={{ opacity: 0, y: 30 }} 
+                whileInView={{ opacity: 1, y: 0 }} 
+                viewport={{ once: true }} 
+                transition={{ duration: 0.5, delay: index * 0.1 }} 
+                className="relative flex md:flex-col items-start md:items-center lg:items-start gap-4 md:gap-0 pl-4 md:pl-0"
+              >
+                <div className="relative z-10 w-12 h-12 md:w-16 md:h-16 flex-shrink-0 md:mx-auto lg:mx-0 md:mb-6 rounded-xl md:rounded-2xl bg-gradient-to-br from-primary to-primary/50 flex items-center justify-center shadow-lg shadow-primary/20">
+                  <span className="font-display text-lg md:text-2xl font-bold text-primary-foreground">{step.step}</span>
                 </div>
-                <h3 className="font-display text-xl font-semibold text-foreground mb-3">{step.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{step.description}</p>
+                <div className="md:text-center lg:text-left flex-1">
+                  <h3 className="font-display text-base md:text-xl font-semibold text-foreground mb-1.5 md:mb-3">{step.title}</h3>
+                  <p className="text-muted-foreground text-xs md:text-sm leading-relaxed">{step.description}</p>
+                </div>
               </motion.div>
             ))}
           </motion.div>
