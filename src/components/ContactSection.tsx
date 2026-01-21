@@ -117,7 +117,7 @@ export default function ContactSection() {
               
               <div className="space-y-4 md:space-y-6">
                 <a
-                  href="https://wa.me/255123456789"
+                  href="https://wa.me/255759340243"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 md:gap-4 p-3 md:p-4 rounded-xl bg-card/50 border border-border/50 hover:border-primary/50 active:scale-[0.98] transition-all group"
@@ -128,7 +128,7 @@ export default function ContactSection() {
                   <div className="min-w-0">
                     <div className="text-xs md:text-sm text-muted-foreground">WhatsApp</div>
                     <div className="text-foreground font-medium group-hover:text-primary transition-colors text-sm md:text-base truncate">
-                      +255 123 456 789
+                      +255 759 340 243
                     </div>
                   </div>
                 </a>
@@ -174,7 +174,7 @@ export default function ContactSection() {
                 className="bg-green-600 hover:bg-green-700 active:bg-green-800 text-white w-full"
               >
                 <a
-                  href="https://wa.me/255123456789"
+                  href="https://wa.me/255759340243"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
