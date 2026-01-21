@@ -24,7 +24,7 @@ const socialLinks = [
   { icon: Linkedin, href: 'https://linkedin.com/company/kbsoftwares', label: 'LinkedIn' },
   { icon: Twitter, href: 'https://twitter.com/kbsoftwares', label: 'Twitter' },
   { icon: Github, href: 'https://github.com/kbsoftwares', label: 'GitHub' },
-  { icon: Instagram, href: 'https://instagram.com/kbsoftwares', label: 'Instagram' },
+  { icon: Instagram, href: 'https://www.instagram.com/kbsoftware_tz/', label: 'Instagram' },
 ];
 
 export default function Footer() {
