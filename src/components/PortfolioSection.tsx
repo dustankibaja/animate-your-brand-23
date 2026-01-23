@@ -4,34 +4,26 @@ import { Button } from '@/components/ui/button';
 
 const projects = [
   {
-    title: 'FinFlow Banking Platform',
-    category: 'Fintech',
-    description: 'A comprehensive digital banking solution enabling seamless mobile payments, account management, and financial insights for over 50,000 users across East Africa.',
-    challenge: 'Traditional banking processes were slow and inaccessible to remote communities.',
-    solution: 'Built a mobile-first platform with offline capabilities and USSD integration.',
-    results: ['50K+ active users', '40% faster transactions', '98% uptime'],
-    technologies: ['React Native', 'Node.js', 'PostgreSQL', 'AWS'],
-    image: 'linear-gradient(135deg, #0d9488 0%, #0f766e 100%)',
-  },
-  {
-    title: 'LogiTrack Delivery System',
+    title: 'HQ Logistics TZ',
     category: 'Logistics',
-    description: 'Real-time fleet management and delivery tracking system that optimizes routes and provides customers with live updates on their shipments.',
-    challenge: 'Manual dispatch processes led to delays and poor customer communication.',
-    solution: 'AI-powered route optimization with real-time GPS tracking and automated notifications.',
-    results: ['30% fuel savings', '2x faster deliveries', '45% fewer complaints'],
-    technologies: ['Next.js', 'Python', 'TensorFlow', 'Google Maps API'],
+    description: 'A comprehensive logistics and freight management platform providing seamless cargo tracking, fleet management, and delivery coordination across Tanzania.',
+    challenge: 'Fragmented logistics operations with poor visibility into shipment status and delivery timelines.',
+    solution: 'Built an integrated platform with real-time tracking, automated dispatch, and customer notifications.',
+    results: ['Improved efficiency', 'Real-time tracking', 'Seamless operations'],
+    technologies: ['React', 'Node.js', 'PostgreSQL', 'Google Maps API'],
     image: 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)',
+    link: 'https://hqlogisticstz.com',
   },
   {
-    title: 'MediConnect Health Portal',
-    category: 'Healthcare',
-    description: 'Telemedicine platform connecting patients with healthcare providers through video consultations, prescription management, and health records.',
-    challenge: 'Limited access to quality healthcare in underserved regions.',
-    solution: 'HIPAA-compliant telemedicine platform with low-bandwidth video capabilities.',
-    results: ['10K+ consultations', '60% reduced wait times', '4.8★ patient rating'],
-    technologies: ['React', 'WebRTC', 'MongoDB', 'Docker'],
+    title: 'Tanzania Energies',
+    category: 'Energy',
+    description: 'Modern energy solutions website showcasing renewable energy products, solar installations, and sustainable power solutions for businesses and homes in Tanzania.',
+    challenge: 'Needed a professional online presence to showcase energy solutions and generate leads.',
+    solution: 'Created a visually compelling website with product catalogs, service information, and lead capture.',
+    results: ['Enhanced visibility', 'Lead generation', 'Professional branding'],
+    technologies: ['React', 'Tailwind CSS', 'Framer Motion', 'SEO Optimized'],
     image: 'linear-gradient(135deg, #0d9488 0%, #14b8a6 100%)',
+    link: 'https://tanzaniaenergies.com',
   },
 ];
 
@@ -112,14 +104,16 @@ export default function PortfolioSection() {
                   
                   {/* Tap/Hover overlay */}
                   <div className="absolute inset-0 bg-background/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 active:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="border-foreground/30 hover:border-primary hover:bg-primary/10 active:bg-primary/20 text-foreground text-sm md:text-base h-10 md:h-11"
-                    >
-                      View Case Study
-                      <ArrowUpRight className="ml-2 w-4 h-4" />
-                    </Button>
+                    <a href={project.link} target="_blank" rel="noopener noreferrer">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="border-foreground/30 hover:border-primary hover:bg-primary/10 active:bg-primary/20 text-foreground text-sm md:text-base h-10 md:h-11"
+                      >
+                        Visit Website
+                        <ExternalLink className="ml-2 w-4 h-4" />
+                      </Button>
+                    </a>
                   </div>
                 </motion.div>
               </div>
