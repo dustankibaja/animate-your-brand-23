@@ -21,11 +21,11 @@ Goal: qualified worldwide enquiries from search and AI recommendations. No guara
 - [x] Implement real WhatsApp handoff without fake success
 - [x] Add transparent privacy information and custom 404
 - [x] Replace provisional wordmark with approved official logo (original 153385.jpg recovered, cropped/resized without redrawing)
-- [ ] Capture approved actual screenshots and case study results (Albastini + Football Intelligence captured from live Vercel, inspected and embedded; GariLink web 500, real mobile capture and client permission pending)
+- [x] Capture approved actual screenshots for initial portfolio (Albastini + Football Intelligence captured live, embedded and owner-approved 2026-11-12; no invented results. GariLink additional mobile screenshots deferred, web deployment returns 500)
 - [ ] Test real customer enquiry end to end on mobile and desktop
 - [x] Add verified alternative contact route for international prospects
 - [ ] Test every navigation link, button, keyboard interaction, form, device size and reduced motion (desktop/mobile automated checks passed on c8cd395; full manual/actual channel testing pending)
-- [x] Review accessibility and color contrast; fix all serious findings (b5a8ae4 passed automated WCAG A/AA serious/critical; new image revision must be retested)
+- [x] Review accessibility and color contrast; fix all serious findings (b19b75a passed automated WCAG A/AA serious/critical and image-aware browser QA; not full manual certification)
 - [ ] Test loading, layout stability, mobile performance; document results
 - [ ] Review service content, legal/privacy accuracy and commercial claims
 - [ ] Obtain owner acceptance of design and production content
@@ -35,7 +35,7 @@ Goal: qualified worldwide enquiries from search and AI recommendations. No guara
 - [x] Add unique titles/descriptions, canonical URLs and Organization/WebSite/Service JSON-LD
 - [x] Generate robots.txt and XML sitemap; allow OAI-SearchBot
 - [x] Add configurable SITE_URL so hosting migrations do not create conflicting canonicals
-- [x] Run build and static validation against final branch; record commit and results (e1a9a50 passed GitHub Actions run 43190019892; rerun on subsequent changes)
+- [x] Run build and static validation against final branch; record commit and results (b19b75a passed GitHub Actions run 43196383395; rerun on subsequent code changes)
 - [ ] Confirm production hosting account is eligible for commercial use (owner elects existing Vercel project; no paid upgrade authorized; Cloudflare setup paused)
 - [ ] Connect GitHub and establish stable public HTTPS production URL
 - [ ] Set final SITE_URL; keep preview deployments private/noindex
@@ -86,13 +86,19 @@ Goal: qualified worldwide enquiries from search and AI recommendations. No guara
 - Phone and WhatsApp: +255759340243 (owner-confirmed; delivery test pending).
 - Business email: dustankibaja22@gmail.com (owner-confirmed; delivery test pending).
 - Registration: not formally registered; no Ltd or incorporation claims.
-- LinkedIn company page URL and official standalone logo outstanding.
+- LinkedIn company page URL outstanding; original official logo recovered and installed.
 - Existing Vercel project selected by owner; Cloudflare account exists but setup paused. Production eligibility, public access and deployment remain unverified.
 
 ## AI discovery evidence
 - OpenAI publisher docs: https://help.openai.com/en/articles/12627856-publishers-and-developers-faq and https://developers.openai.com/api/docs/bots . OAI-SearchBot must reach public content; GPTBot training permission is separate. No ranking guarantee.
 - Public checker now tests all sitemap pages, anonymous requests, simulated OAI-SearchBot user agent and 404; this cannot prove a genuine crawler visit. Validate real bot IPs against https://openai.com/searchbot.json if request logs are available.
 - Vercel preview is not production: production canonicals must match kb-softwares.vercel.app, and public routes must not require Vercel authentication. No search submissions until production checks pass.
+
+## Owner approval and release readiness (2026-11-12)
+- Owner approved the actual portfolio screenshots for use. Approval applies to Albastini and Football Intelligence; retain accurate founder attribution and third-party rights checks.
+- Latest static and image-aware browser QA passed on b19b75a, run 43196383395. Production not yet changed.
+- Initial launch does not require additional GariLink screenshots, additional case studies, custom domain or published fixed pricing. Defer these without implying completion.
+- Final release: owner acceptance of overall visual direction and production content, confirm contact handoffs and actual delivery, verify commercial hosting eligibility, deploy a fresh production build (not promote a noindex preview), validate anonymous HTTP access and all crawler/indexing checks. Then submit sitemap and update listings.
 
 ## Latest portfolio evidence
 - Capture workflow 43195894757 succeeded: live Albastini and Football Intelligence screenshots, visually inspected, stored in site/assets/projects/ with provenance.json. Commit 6cc5077.
