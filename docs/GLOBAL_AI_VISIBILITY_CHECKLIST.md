@@ -36,7 +36,7 @@ Goal: qualified worldwide enquiries from search and AI recommendations. No guara
 - [x] Generate robots.txt and XML sitemap; allow OAI-SearchBot
 - [x] Add configurable SITE_URL so hosting migrations do not create conflicting canonicals
 - [x] Run build and static validation against final branch; record commit and results (e1a9a50 passed GitHub Actions run 43190019892; rerun on subsequent changes)
-- [x] Choose eligible free commercial hosting and verify terms (Cloudflare Pages Free for static site; owner reports account created)
+- [ ] Confirm production hosting account is eligible for commercial use (owner elects existing Vercel project; no paid upgrade authorized; Cloudflare setup paused)
 - [ ] Connect GitHub and establish stable public HTTPS production URL
 - [ ] Set final SITE_URL; keep preview deployments private/noindex
 - [ ] Verify anonymous public HTTP 200, redirects, 404 status and crawler access
@@ -64,10 +64,10 @@ Goal: qualified worldwide enquiries from search and AI recommendations. No guara
 ## E. Content and international discovery
 - [x] Publish initial MVP and website planning guide source pages
 - [ ] Validate search demand and prioritize realistic buyer-intent queries
-- [ ] Expand each service page with original examples, FAQs and decision guidance
+- [x] Expand each service page with original examples, FAQs and decision guidance (six pages; draft, pending final QA)
 - [ ] Publish original Flutter/Supabase and business automation guides
 - [ ] Publish website pricing guide only after price approval
-- [ ] Add relevant Africa and international delivery content without fake local offices
+- [x] Add relevant Africa and international delivery content without fake local offices (About page remote collaboration and Tanzania base)
 - [ ] Publish content on a sustainable cadence, cross-link service and case-study pages
 - [ ] Refresh outdated content and correct broken links regularly
 
@@ -87,7 +87,12 @@ Goal: qualified worldwide enquiries from search and AI recommendations. No guara
 - Business email: dustankibaja22@gmail.com (owner-confirmed; delivery test pending).
 - Registration: not formally registered; no Ltd or incorporation claims.
 - LinkedIn company page URL and official standalone logo outstanding.
-- Cloudflare account created by owner; GitHub authorization and project setup pending.
+- Existing Vercel project selected by owner; Cloudflare account exists but setup paused. Production eligibility, public access and deployment remain unverified.
+
+## AI discovery evidence
+- OpenAI publisher docs: https://help.openai.com/en/articles/12627856-publishers-and-developers-faq and https://developers.openai.com/api/docs/bots . OAI-SearchBot must reach public content; GPTBot training permission is separate. No ranking guarantee.
+- Public checker now tests all sitemap pages, anonymous requests, simulated OAI-SearchBot user agent and 404; this cannot prove a genuine crawler visit. Validate real bot IPs against https://openai.com/searchbot.json if request logs are available.
+- Vercel preview is not production: production canonicals must match kb-softwares.vercel.app, and public routes must not require Vercel authentication. No search submissions until production checks pass.
 
 ## Browser QA
 - GitHub Actions run 43190175922 passed static and browser QA on c8cd395; 19 pages at desktop/mobile sizes, navigation, no overflow, intercepted WhatsApp and no-JS fallback.
