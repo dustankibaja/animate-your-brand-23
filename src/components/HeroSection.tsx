@@ -39,8 +39,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 md:mb-10 leading-relaxed px-2"
         >
-          Tanzania's premier tech studio crafting sleek websites, powerful software systems, 
-          and AI-driven solutions for modern businesses across Africa and beyond.
+          KB Softwares is a software development studio based in Dar es Salaam, Tanzania. We build websites, mobile apps, custom business systems and automation for startups and businesses worldwide.
         </motion.p>
 
         <motion.div
@@ -72,10 +71,10 @@ export default function HeroSection() {
         {/* Stats */}
         <div className="mt-12 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-3xl mx-auto">
           {[
-            { value: '50+', label: 'Projects Delivered' },
-            { value: '30+', label: 'Happy Clients' },
-            { value: '5+', label: 'Years Experience' },
-            { value: '99%', label: 'Client Satisfaction' },
+            { value: 'Web', label: 'Website Development' },
+            { value: 'App', label: 'Mobile Development' },
+            { value: 'Cloud', label: 'Business Systems' },
+            { value: 'Global', label: 'Remote Collaboration' },
           ].map((stat, index) => (
             <div key={index} className="text-center p-3 md:p-0">
               <div className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-gradient-primary mb-1">

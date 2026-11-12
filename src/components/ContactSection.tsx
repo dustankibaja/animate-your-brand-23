@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, MessageCircle, Mail, Phone, MapPin } from 'lucide-react';
+import { Send, MessageCircle, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { useToast } from '@/hooks/use-toast';
 import { z } from 'zod';
 
 const contactSchema = z.object({
@@ -20,7 +19,6 @@ const contactSchema = z.object({
 type ContactFormData = z.infer<typeof contactSchema>;
 
 export default function ContactSection() {
-  const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
@@ -39,7 +37,7 @@ export default function ContactSection() {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setErrors({});
@@ -58,23 +56,19 @@ export default function ContactSection() {
       return;
     }
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    toast({
-      title: "Message sent successfully!",
-      description: "We'll respond within 24 hours. Thank you for reaching out!",
-    });
-    
-    setFormData({
-      name: '',
-      email: '',
-      company: '',
-      projectType: '',
-      budget: '',
-      message: '',
-    });
+    const details = result.data;
+    const message = [
+      'Hello KB Softwares! I would like to discuss a project.',
+      `Name: ${details.name}`,
+      `Email: ${details.email}`,
+      details.company ? `Company: ${details.company}` : '',
+      details.projectType ? `Project type: ${details.projectType}` : '',
+      details.budget ? `Budget (USD): ${details.budget}` : '',
+      `Project details: ${details.message}`,
+    ].filter(Boolean).join('\n');
+    const url = `https://wa.me/255759340243?text=${encodeURIComponent(message)}`;
     setIsSubmitting(false);
+    window.location.assign(url);
   };
 
   return (
@@ -97,7 +91,7 @@ export default function ContactSection() {
           </h2>
           <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto px-2">
             Ready to transform your business with technology? Tell us about your project, 
-            and we'll get back to you within 24 hours.
+            and continue the conversation with us on WhatsApp.
           </p>
         </motion.div>
 
@@ -133,20 +127,6 @@ export default function ContactSection() {
                   </div>
                 </a>
 
-                <a
-                  href="mailto:hello@kbsoftwares.com"
-                  className="flex items-center gap-3 md:gap-4 p-3 md:p-4 rounded-xl bg-card/50 border border-border/50 hover:border-primary/50 active:scale-[0.98] transition-all group"
-                >
-                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-primary/20 text-primary flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-5 h-5 md:w-6 md:h-6" />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="text-xs md:text-sm text-muted-foreground">Email</div>
-                    <div className="text-foreground font-medium group-hover:text-primary transition-colors text-sm md:text-base truncate">
-                      hello@kbsoftwares.com
-                    </div>
-                  </div>
-                </a>
 
                 <div className="flex items-center gap-3 md:gap-4 p-3 md:p-4 rounded-xl bg-card/50 border border-border/50">
                   <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-accent/20 text-accent flex items-center justify-center flex-shrink-0">
@@ -292,6 +272,7 @@ export default function ContactSection() {
                 <p className="text-muted-foreground text-xs mt-1">{formData.message.length}/1000 characters</p>
               </div>
 
+              <p className="text-muted-foreground text-sm">Your details will be placed in a WhatsApp message. Review and send it in WhatsApp; this form does not send a message automatically.</p>
               <Button
                 type="submit"
                 disabled={isSubmitting}
@@ -301,11 +282,11 @@ export default function ContactSection() {
                 {isSubmitting ? (
                   <>
                     <div className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin mr-2" />
-                    Sending...
+                    Preparing...
                   </>
                 ) : (
                   <>
-                    Send Message
+                    Continue on WhatsApp
                     <Send className="w-5 h-5 ml-2" />
                   </>
                 )}
