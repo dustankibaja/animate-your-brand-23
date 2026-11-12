@@ -1,0 +1,27 @@
+name: KB website validation
+on:
+  push:
+    branches: [feature/global-ai-visibility]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  static-site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build and validate all static pages
+        run: node scripts/build-site.mjs && node scripts/test-site.mjs
+        env:
+          SITE_URL: https://kb-softwares.pages.dev
+      - name: Check client script
+        run: node --check site/assets/site.js
+      - name: Verify preview indexing protection
+        run: |
+          SITE_PREVIEW=1 SITE_URL=https://kb-softwares.pages.dev node scripts/build-site.mjs
+          grep -q 'noindex, nofollow' dist/index.html
+          grep -q 'Disallow: /' dist/robots.txt
+          grep -q 'X-Robots-Tag: noindex, nofollow' dist/_headers

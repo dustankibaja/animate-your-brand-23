@@ -9,7 +9,7 @@ Goal: qualified worldwide enquiries from search and AI recommendations. No guara
 - [x] Define global positioning, retain Tanzania base and existing teal/orange design tokens
 - [ ] Confirm official business name, registration status if relevant, logo and official social URLs
 - [ ] Confirm business phone/WhatsApp ownership and tested delivery
-- [ ] Confirm business email or other non-WhatsApp channel
+- [x] Confirm business email or other non-WhatsApp channel
 - [ ] Verify each client project, attribution, approval, and evidence before publication
 - [ ] Approve actual service scope, pricing, currency, timelines and support commitments
 
@@ -23,7 +23,7 @@ Goal: qualified worldwide enquiries from search and AI recommendations. No guara
 - [ ] Replace provisional wordmark with approved official logo if available
 - [ ] Capture approved actual screenshots and case study results
 - [ ] Test real customer enquiry end to end on mobile and desktop
-- [ ] Add verified alternative contact route for international prospects
+- [x] Add verified alternative contact route for international prospects
 - [ ] Test every navigation link, button, keyboard interaction, form, device size and reduced motion
 - [ ] Review accessibility and color contrast; fix all serious findings
 - [ ] Test loading, layout stability, mobile performance; document results
@@ -80,6 +80,14 @@ Goal: qualified worldwide enquiries from search and AI recommendations. No guara
 - [ ] Track qualified leads, proposals, signed projects and revenue from each source
 - [ ] Review weekly; prioritize fixes based on evidence
 - [ ] Review quarterly; update content, reputation, crawl and conversion strategy
+
+## Confirmed identity (owner, 2026-11-12)
+- Brand: KB Softwares; founder: Dustan Kibaja; base: Dar es Salaam, Tanzania; remote worldwide.
+- Phone and WhatsApp: +255759340243 (owner-confirmed; delivery test pending).
+- Business email: dustankibaja22@gmail.com (owner-confirmed; delivery test pending).
+- Registration: not formally registered; no Ltd or incorporation claims.
+- LinkedIn company page URL and official standalone logo outstanding.
+- Cloudflare account not created yet.
 
 ## Launch gate
 Production is not complete until build/static validation, browser QA, confirmed contact, approved claims, public hosting and crawler checks all pass. A branch commit is not a live launch or indexing guarantee.
