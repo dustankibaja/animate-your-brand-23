@@ -35,7 +35,7 @@ Goal: qualified worldwide enquiries from search and AI recommendations. No guara
 - [x] Add unique titles/descriptions, canonical URLs and Organization/WebSite/Service JSON-LD
 - [x] Generate robots.txt and XML sitemap; allow OAI-SearchBot
 - [x] Add configurable SITE_URL so hosting migrations do not create conflicting canonicals
-- [ ] Run build and static validation against final branch; record commit and results
+- [x] Run build and static validation against final branch; record commit and results (e1a9a50 passed GitHub Actions run 43190019892; rerun on subsequent changes)
 - [ ] Choose eligible free commercial hosting and verify terms
 - [ ] Connect GitHub and establish stable public HTTPS production URL
 - [ ] Set final SITE_URL; keep preview deployments private/noindex
@@ -88,6 +88,9 @@ Goal: qualified worldwide enquiries from search and AI recommendations. No guara
 - Registration: not formally registered; no Ltd or incorporation claims.
 - LinkedIn company page URL and official standalone logo outstanding.
 - Cloudflare account not created yet.
+
+## Browser QA
+- Automated desktop/mobile browser checks added; verify latest run before launch. WhatsApp is intercepted in tests, not actually sent. Real delivery still pending.
 
 ## Launch gate
 Production is not complete until build/static validation, browser QA, confirmed contact, approved claims, public hosting and crawler checks all pass. A branch commit is not a live launch or indexing guarantee.

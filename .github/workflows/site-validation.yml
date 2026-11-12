@@ -1,7 +1,7 @@
 name: KB website validation
 on:
   push:
-    branches: [feature/global-ai-visibility]
+    branches: [main, feature/global-ai-visibility]
   workflow_dispatch:
 permissions:
   contents: read
@@ -25,3 +25,25 @@ jobs:
           grep -q 'noindex, nofollow' dist/index.html
           grep -q 'Disallow: /' dist/robots.txt
           grep -q 'X-Robots-Tag: noindex, nofollow' dist/_headers
+  browser-qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build website
+        run: node scripts/build-site.mjs
+        env:
+          SITE_URL: https://kb-softwares.pages.dev
+      - name: Install browser test tooling
+        run: npm install --no-save --package-lock=false playwright
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Browser QA
+        run: node scripts/test-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: kb-browser-screenshots
+          path: qa-screenshots/
