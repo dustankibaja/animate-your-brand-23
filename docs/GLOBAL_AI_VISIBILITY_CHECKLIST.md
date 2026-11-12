@@ -28,7 +28,7 @@ Goal: qualified worldwide enquiries from search and AI recommendations. No guara
 - [x] Review accessibility and color contrast; fix all serious findings (b19b75a passed automated WCAG A/AA serious/critical and image-aware browser QA; not full manual certification)
 - [ ] Test loading, layout stability, mobile performance; document results
 - [ ] Review service content, legal/privacy accuracy and commercial claims
-- [ ] Obtain owner acceptance of design and production content
+- [x] Obtain owner acceptance of visual design (owner explicitly approved on 2026-11-12; service scope and third-party attribution tracked separately)
 
 ## C. Crawlability and hosting
 - [x] Generate static HTML for home, service pages, work, about, insights, contact and privacy
@@ -98,12 +98,12 @@ Goal: qualified worldwide enquiries from search and AI recommendations. No guara
 - Owner approved the actual portfolio screenshots for use. Approval applies to Albastini and Football Intelligence; retain accurate founder attribution and third-party rights checks.
 - Latest static and image-aware browser QA passed on b19b75a, run 43196383395. Production not yet changed.
 - Initial launch does not require additional GariLink screenshots, additional case studies, custom domain or published fixed pricing. Defer these without implying completion.
-- Final release: owner acceptance of overall visual direction and production content, confirm contact handoffs and actual delivery, verify commercial hosting eligibility, deploy a fresh production build (not promote a noindex preview), validate anonymous HTTP access and all crawler/indexing checks. Then submit sitemap and update listings.
+- Final release: owner explicitly approved overall visual design and portfolio screenshots on 2026-11-12. Release approved for existing Vercel project; actual message receipt and commercial plan eligibility remain separate follow-ups. Deploy fresh production build, verify anonymous HTTP access and crawler/indexing checks. Then submit sitemap and update listings.
 
 ## Latest portfolio evidence
 - Capture workflow 43195894757 succeeded: live Albastini and Football Intelligence screenshots, visually inspected, stored in site/assets/projects/ with provenance.json. Commit 6cc5077.
 - Authenticated Vercel preview https://kb-softwares-jig5od0m9-dreys-projects-e4e763b7.vercel.app verified homepage, work and both case studies HTTP 200 with actual screenshots and original logo. Preview remains noindex. GariLink production and two alternate deployments returned HTTP 500; do not publish a fake capture.
-- b5a8ae4 build and browser QA passed (run 43195894745). Final image-aware QA added; owner design review is required before production.
+- b5a8ae4 build and browser QA passed (run 43195894745). Final image-aware QA added; owner approved visual design and screenshots on 2026-11-12.
 
 ## Brand and design revision
 - Owner rejected prior visual direction. Original KB logo recovered from September 23 attachment; brand mark crop uses actual image, no redraw. New editorial hero and evidence-first work cards implemented; owner review pending.

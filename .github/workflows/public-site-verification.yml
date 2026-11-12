@@ -1,0 +1,23 @@
+name: Verify public KB production site
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-verification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Wait for fresh production release and verify anonymous crawler access
+        run: |
+          for i in $(seq 1 18); do
+            if node scripts/check-public-site.mjs https://kb-softwares.vercel.app; then exit 0; fi
+            sleep 10
+          done
+          exit 1
