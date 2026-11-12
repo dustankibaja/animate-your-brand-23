@@ -20,12 +20,12 @@ Goal: qualified worldwide enquiries from search and AI recommendations. No guara
 - [x] Add honest project illustrations and founder attribution
 - [x] Implement real WhatsApp handoff without fake success
 - [x] Add transparent privacy information and custom 404
-- [ ] Replace provisional wordmark with approved official logo if available
+- [x] Replace provisional wordmark with approved official logo (original 153385.jpg recovered, cropped/resized without redrawing)
 - [ ] Capture approved actual screenshots and case study results
 - [ ] Test real customer enquiry end to end on mobile and desktop
 - [x] Add verified alternative contact route for international prospects
 - [ ] Test every navigation link, button, keyboard interaction, form, device size and reduced motion (desktop/mobile automated checks passed on c8cd395; full manual/actual channel testing pending)
-- [ ] Review accessibility and color contrast; fix all serious findings
+- [x] Review accessibility and color contrast; fix all serious findings (4c62f14 automated WCAG A/AA serious/critical passed; new design must be retested)
 - [ ] Test loading, layout stability, mobile performance; document results
 - [ ] Review service content, legal/privacy accuracy and commercial claims
 - [ ] Obtain owner acceptance of design and production content
@@ -93,6 +93,10 @@ Goal: qualified worldwide enquiries from search and AI recommendations. No guara
 - OpenAI publisher docs: https://help.openai.com/en/articles/12627856-publishers-and-developers-faq and https://developers.openai.com/api/docs/bots . OAI-SearchBot must reach public content; GPTBot training permission is separate. No ranking guarantee.
 - Public checker now tests all sitemap pages, anonymous requests, simulated OAI-SearchBot user agent and 404; this cannot prove a genuine crawler visit. Validate real bot IPs against https://openai.com/searchbot.json if request logs are available.
 - Vercel preview is not production: production canonicals must match kb-softwares.vercel.app, and public routes must not require Vercel authentication. No search submissions until production checks pass.
+
+## Brand and design revision
+- Owner rejected prior visual direction. Original KB logo recovered from September 23 attachment; brand mark crop uses actual image, no redraw. New editorial hero and evidence-first work cards implemented; owner review pending.
+- Albastini and Football Intelligence deployment HTML verified; GariLink Vercel returned HTTP 500. Capture job uses real deployment when public, otherwise builds exact Vercel production source revision, recording provenance. No fabricated screenshots.
 
 ## Browser QA
 - GitHub Actions run 43190175922 passed static and browser QA on c8cd395; 19 pages at desktop/mobile sizes, navigation, no overflow, intercepted WhatsApp and no-JS fallback.
