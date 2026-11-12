@@ -1,10 +1,12 @@
 import {mkdir,rm,readdir,readFile,writeFile,copyFile} from 'node:fs/promises';
 import {join} from 'node:path';
-const configured=process.env.SITE_URL||'https://kb-softwares.vercel.app';
+const productionBranch=process.env.SITE_PRODUCTION_BRANCH||'main';
+const preview=process.env.VERCEL_ENV==='preview'||process.env.SITE_PREVIEW==='1'||(process.env.CF_PAGES_BRANCH&&process.env.CF_PAGES_BRANCH!==productionBranch);
+if(process.env.CF_PAGES==='1'&&!preview&&!process.env.SITE_URL)throw new Error('Set SITE_URL to the verified production HTTPS origin before an indexable Cloudflare build');
+const configured=process.env.SITE_URL||(preview&&process.env.CF_PAGES_URL)||'https://kb-softwares.vercel.app';
 const url=new URL(configured);
 if(url.protocol!=='https:'||url.pathname!=='/'||url.search||url.hash||url.username||url.password)throw new Error('SITE_URL must be an HTTPS origin without a path, query or credentials');
 const origin=url.origin;
-const preview=process.env.VERCEL_ENV==='preview'||process.env.SITE_PREVIEW==='1'||(process.env.CF_PAGES_BRANCH&&process.env.CF_PAGES_BRANCH!=='main');
 await rm('dist',{recursive:true,force:true});
 async function copy(src,dst){await mkdir(dst,{recursive:true});for(const entry of await readdir(src,{withFileTypes:true})){const a=join(src,entry.name),b=join(dst,entry.name);if(entry.isDirectory())await copy(a,b);else if(!/\.(html|css|js|svg|xml|txt|json|md)$/i.test(entry.name)){await copyFile(a,b);}else{const data=await readFile(a,'utf8');let output=data.replaceAll('__SITE_URL__',origin);if(b.endsWith('.html')){output=output.replace('<script defer src="/assets/site.js"></script>','<script type="module" src="/assets/site.js"></script>');output=output.replaceAll('<a href="https://wa.me/255759340243">WhatsApp</a>','<a href="https://wa.me/255759340243">WhatsApp</a><a href="mailto:dustankibaja22@gmail.com">Email</a>');output=output.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g,(_,raw)=>{const schema=JSON.parse(raw);for(const node of schema['@graph']||[]){if(node['@type']==='Organization'){node.telephone='+255759340243';node.email='dustankibaja22@gmail.com';node.founder={'@type':'Person',name:'Dustan Kibaja'};node.contactPoint={'@type':'ContactPoint',contactType:'sales',telephone:'+255759340243',email:'dustankibaja22@gmail.com',availableLanguage:['English','Swahili'],areaServed:'Worldwide'};}}return '<script type="application/ld+json">'+JSON.stringify(schema).replaceAll('<','\\u003c')+'</script>';});}if(preview&&b.endsWith('.html'))output=output.replace('content="index, follow"','content="noindex, nofollow"');if(preview&&entry.name==='robots.txt')output='User-agent: *\nDisallow: /\n';await writeFile(b,output);}}}
 await copy('site','dist');

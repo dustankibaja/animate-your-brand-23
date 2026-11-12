@@ -1,7 +1,7 @@
 name: KB website validation
 on:
   push:
-    branches: [main, feature/global-ai-visibility]
+    branches: [main, feature/global-ai-visibility, release/kb-website]
   workflow_dispatch:
 permissions:
   contents: read
@@ -37,7 +37,7 @@ jobs:
         env:
           SITE_URL: https://kb-softwares.pages.dev
       - name: Install browser test tooling
-        run: npm install --no-save --package-lock=false playwright
+        run: npm install --no-save --package-lock=false playwright @axe-core/playwright
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
       - name: Browser QA

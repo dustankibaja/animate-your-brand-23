@@ -24,7 +24,7 @@ Goal: qualified worldwide enquiries from search and AI recommendations. No guara
 - [ ] Capture approved actual screenshots and case study results
 - [ ] Test real customer enquiry end to end on mobile and desktop
 - [x] Add verified alternative contact route for international prospects
-- [ ] Test every navigation link, button, keyboard interaction, form, device size and reduced motion
+- [ ] Test every navigation link, button, keyboard interaction, form, device size and reduced motion (desktop/mobile automated checks passed on c8cd395; full manual/actual channel testing pending)
 - [ ] Review accessibility and color contrast; fix all serious findings
 - [ ] Test loading, layout stability, mobile performance; document results
 - [ ] Review service content, legal/privacy accuracy and commercial claims
@@ -36,7 +36,7 @@ Goal: qualified worldwide enquiries from search and AI recommendations. No guara
 - [x] Generate robots.txt and XML sitemap; allow OAI-SearchBot
 - [x] Add configurable SITE_URL so hosting migrations do not create conflicting canonicals
 - [x] Run build and static validation against final branch; record commit and results (e1a9a50 passed GitHub Actions run 43190019892; rerun on subsequent changes)
-- [ ] Choose eligible free commercial hosting and verify terms
+- [x] Choose eligible free commercial hosting and verify terms (Cloudflare Pages Free for static site; owner reports account created)
 - [ ] Connect GitHub and establish stable public HTTPS production URL
 - [ ] Set final SITE_URL; keep preview deployments private/noindex
 - [ ] Verify anonymous public HTTP 200, redirects, 404 status and crawler access
@@ -87,10 +87,11 @@ Goal: qualified worldwide enquiries from search and AI recommendations. No guara
 - Business email: dustankibaja22@gmail.com (owner-confirmed; delivery test pending).
 - Registration: not formally registered; no Ltd or incorporation claims.
 - LinkedIn company page URL and official standalone logo outstanding.
-- Cloudflare account not created yet.
+- Cloudflare account created by owner; GitHub authorization and project setup pending.
 
 ## Browser QA
-- Automated desktop/mobile browser checks added; verify latest run before launch. WhatsApp is intercepted in tests, not actually sent. Real delivery still pending.
+- GitHub Actions run 43190175922 passed static and browser QA on c8cd395; 19 pages at desktop/mobile sizes, navigation, no overflow, intercepted WhatsApp and no-JS fallback.
+- Actual screenshot review identified headline wrapping and uneven portfolio grid; refinements and automated accessibility checks added in next revision. Verify latest CI before launch. Real message delivery and manual accessibility/visual review remain pending.
 
 ## Launch gate
 Production is not complete until build/static validation, browser QA, confirmed contact, approved claims, public hosting and crawler checks all pass. A branch commit is not a live launch or indexing guarantee.
