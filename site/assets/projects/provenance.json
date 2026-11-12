@@ -1,0 +1,16 @@
+[
+  {
+    "slug": "albastini",
+    "source": "public Vercel deployment",
+    "revision": "c5f7e06cc2444f3730c7ecefc50def8b3cdcc3c4",
+    "url": "https://albastnicardgame.vercel.app/",
+    "capturedAt": "2026-11-12T09:57:33.611Z"
+  },
+  {
+    "slug": "football-intelligence",
+    "source": "public Vercel deployment",
+    "revision": "b437b464195ce8c2d076c34e3ae09dab20b85990",
+    "url": "https://footmo-live.vercel.app/",
+    "capturedAt": "2026-11-12T09:57:34.872Z"
+  }
+]
