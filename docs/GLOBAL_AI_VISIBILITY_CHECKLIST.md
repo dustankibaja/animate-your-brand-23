@@ -21,11 +21,11 @@ Goal: qualified worldwide enquiries from search and AI recommendations. No guara
 - [x] Implement real WhatsApp handoff without fake success
 - [x] Add transparent privacy information and custom 404
 - [x] Replace provisional wordmark with approved official logo (original 153385.jpg recovered, cropped/resized without redrawing)
-- [ ] Capture approved actual screenshots and case study results
+- [ ] Capture approved actual screenshots and case study results (Albastini + Football Intelligence captured from live Vercel, inspected and embedded; GariLink web 500, real mobile capture and client permission pending)
 - [ ] Test real customer enquiry end to end on mobile and desktop
 - [x] Add verified alternative contact route for international prospects
 - [ ] Test every navigation link, button, keyboard interaction, form, device size and reduced motion (desktop/mobile automated checks passed on c8cd395; full manual/actual channel testing pending)
-- [x] Review accessibility and color contrast; fix all serious findings (4c62f14 automated WCAG A/AA serious/critical passed; new design must be retested)
+- [x] Review accessibility and color contrast; fix all serious findings (b5a8ae4 passed automated WCAG A/AA serious/critical; new image revision must be retested)
 - [ ] Test loading, layout stability, mobile performance; document results
 - [ ] Review service content, legal/privacy accuracy and commercial claims
 - [ ] Obtain owner acceptance of design and production content
@@ -50,7 +50,7 @@ Goal: qualified worldwide enquiries from search and AI recommendations. No guara
 
 ## D. Business identity and authority
 - [ ] Verify and update existing LinkedIn company page and link final website
-- [ ] Align Instagram and other confirmed profiles with exact business name and URL
+- [ ] Align Instagram and other confirmed profiles with exact business name and URL (website now links known KB Instagram; update external profile after production URL confirmed)
 - [ ] Check Google Business Profile eligibility (genuine in-person customer contact)
 - [ ] Create/verify eligible Google Business Profile with accurate address or service area
 - [ ] Create or claim Clutch profile; verify free listing conditions
@@ -93,6 +93,11 @@ Goal: qualified worldwide enquiries from search and AI recommendations. No guara
 - OpenAI publisher docs: https://help.openai.com/en/articles/12627856-publishers-and-developers-faq and https://developers.openai.com/api/docs/bots . OAI-SearchBot must reach public content; GPTBot training permission is separate. No ranking guarantee.
 - Public checker now tests all sitemap pages, anonymous requests, simulated OAI-SearchBot user agent and 404; this cannot prove a genuine crawler visit. Validate real bot IPs against https://openai.com/searchbot.json if request logs are available.
 - Vercel preview is not production: production canonicals must match kb-softwares.vercel.app, and public routes must not require Vercel authentication. No search submissions until production checks pass.
+
+## Latest portfolio evidence
+- Capture workflow 43195894757 succeeded: live Albastini and Football Intelligence screenshots, visually inspected, stored in site/assets/projects/ with provenance.json. Commit 6cc5077.
+- Authenticated Vercel preview https://kb-softwares-jig5od0m9-dreys-projects-e4e763b7.vercel.app verified homepage, work and both case studies HTTP 200 with actual screenshots and original logo. Preview remains noindex. GariLink production and two alternate deployments returned HTTP 500; do not publish a fake capture.
+- b5a8ae4 build and browser QA passed (run 43195894745). Final image-aware QA added; owner design review is required before production.
 
 ## Brand and design revision
 - Owner rejected prior visual direction. Original KB logo recovered from September 23 attachment; brand mark crop uses actual image, no redraw. New editorial hero and evidence-first work cards implemented; owner review pending.
