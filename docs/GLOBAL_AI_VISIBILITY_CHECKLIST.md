@@ -37,11 +37,11 @@ Goal: qualified worldwide enquiries from search and AI recommendations. No guara
 - [x] Add configurable SITE_URL so hosting migrations do not create conflicting canonicals
 - [x] Run build and static validation against final branch; record commit and results (b19b75a passed GitHub Actions run 43196383395; rerun on subsequent code changes)
 - [ ] Confirm production hosting account is eligible for commercial use (owner elects existing Vercel project; no paid upgrade authorized; Cloudflare setup paused)
-- [ ] Connect GitHub and establish stable public HTTPS production URL
-- [ ] Set final SITE_URL; keep preview deployments private/noindex
-- [ ] Verify anonymous public HTTP 200, redirects, 404 status and crawler access
-- [ ] Verify no noindex header or firewall challenge on production pages
-- [ ] Confirm robots.txt and sitemap HTTP 200, XML validity and canonical consistency
+- [x] Connect GitHub and establish stable public HTTPS production URL (2026-11-13: kb-softwares.vercel.app, deployment READY)
+- [x] Set final SITE_URL; keep preview deployments private/noindex (production canonical origin verified; previously verified preview noindex)
+- [x] Verify anonymous public HTTP 200, same-origin final URLs, 404 status and simulated crawler access (public QA run 43199098380; actual crawler visits not proven)
+- [x] Verify no noindex header or authentication barrier on 18 production sitemap pages (anonymous QA passed)
+- [x] Confirm robots.txt and sitemap HTTP 200, 18 unique sitemap URLs and canonical consistency (public QA passed; full XML schema validation not separately performed)
 - [ ] Validate structured data and rendered/raw HTML
 - [ ] Register Google Search Console and submit sitemap
 - [ ] Register Bing Webmaster Tools and submit sitemap
@@ -84,10 +84,10 @@ Goal: qualified worldwide enquiries from search and AI recommendations. No guara
 ## Confirmed identity (owner, 2026-11-12)
 - Brand: KB Softwares; founder: Dustan Kibaja; base: Dar es Salaam, Tanzania; remote worldwide.
 - Phone and WhatsApp: +255759340243 (owner-confirmed; delivery test pending).
-- Business email: dustankibaja22@gmail.com (owner-confirmed; delivery test pending).
+- Business email: dustankibaja22@gmail.com (owner-confirmed; Gmail self-delivery verified, test KB-QA-20261112; external sender test pending).
 - Registration: not formally registered; no Ltd or incorporation claims.
 - LinkedIn company page URL outstanding; original official logo recovered and installed.
-- Existing Vercel project selected by owner; Cloudflare account exists but setup paused. Production eligibility, public access and deployment remain unverified.
+- Existing Vercel project selected by owner; Cloudflare account exists but setup paused. Production deployment and public access verified 2026-11-13; commercial plan eligibility remains unverified.
 
 ## AI discovery evidence
 - OpenAI publisher docs: https://help.openai.com/en/articles/12627856-publishers-and-developers-faq and https://developers.openai.com/api/docs/bots . OAI-SearchBot must reach public content; GPTBot training permission is separate. No ranking guarantee.
@@ -112,6 +112,11 @@ Goal: qualified worldwide enquiries from search and AI recommendations. No guara
 ## Browser QA
 - GitHub Actions run 43190175922 passed static and browser QA on c8cd395; 19 pages at desktop/mobile sizes, navigation, no overflow, intercepted WhatsApp and no-JS fallback.
 - Actual screenshot review identified headline wrapping and uneven portfolio grid; refinements and automated accessibility checks added in next revision. Verify latest CI before launch. Real message delivery and manual accessibility/visual review remain pending.
+
+## Production release evidence (2026-11-13)
+- Fresh production deployment dpl_Cu6gyLfqWdf9MBHaPjU1TGkGAG6o from main commit 6edb5628d596f8e613dd6331a6e2018f5951f0b9 is READY; official alias https://kb-softwares.vercel.app assigned. No preview promotion or billing change.
+- Public QA rerun https://github.com/dustankibaja/animate-your-brand-23/actions/runs/43199098380 succeeded (job 131858278509). PASS: 18 indexable pages, anonymous HTTPS, canonical, robots, sitemap, structured data presence, 404 and simulated crawler user agent. No actual crawl or indexing claim.
+- Owner reports Clutch, GoodFirms, LinkedIn and DesignRush profiles set up; public listing URLs/approval not independently verified. WhatsApp handoff tested; external message receipt pending. Next: Search Console and Bing sitemap submissions, commercial hosting eligibility, genuine reviews and indexing measurement.
 
 ## Launch gate
 Production is not complete until build/static validation, browser QA, confirmed contact, approved claims, public hosting and crawler checks all pass. A branch commit is not a live launch or indexing guarantee.
